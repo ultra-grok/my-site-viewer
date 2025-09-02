@@ -21,8 +21,8 @@ function setupViewer(dataset) {
 
     function displayEntry(index) {
         const entry = dataset[index];
-        summaryContent.textContent = entry.prompt;
-        postContent.textContent = entry.completion;
+        summaryContent.textContent = entry.completion;
+        postContent.textContent = entry.prompt;
         entryCounter.textContent = `Entry ${currentIndex + 1} of ${dataset.length}`;
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === dataset.length - 1;
