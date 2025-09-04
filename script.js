@@ -31,20 +31,33 @@ function setupViewer(dataset) {
         
         // Update counter text
         entryCounter.textContent = `Entry ${currentIndex + 1} of ${dataset.length}`;
-
-        // Buttons are no longer disabled, so those lines are removed.
     }
 
-    nextBtn.addEventListener('click', () => {
-        // Use the modulo operator to loop back to the start
+    // --- NEW: Refactored navigation into separate functions ---
+
+    function showNextEntry() {
+        // This formula correctly wraps from the last item back to the first
         currentIndex = (currentIndex + 1) % dataset.length;
         displayEntry(currentIndex);
-    });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        // Use a formula to loop back to the end
+    function showPrevEntry() {
+        // This formula correctly wraps from the first item back to the last
         currentIndex = (currentIndex - 1 + dataset.length) % dataset.length;
         displayEntry(currentIndex);
+    }
+
+    // --- Add event listeners for buttons ---
+    nextBtn.addEventListener('click', showNextEntry);
+    prevBtn.addEventListener('click', showPrevEntry);
+
+    // --- NEW: Add event listener for arrow keys ---
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            showNextEntry();
+        } else if (event.key === 'ArrowLeft') {
+            showPrevEntry();
+        }
     });
 
     // Display the first entry initially
