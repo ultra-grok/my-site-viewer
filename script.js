@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function setupViewer(dataset) {
-    const summaryContent = document.getElementById('summaryContent');
-    const postContent = document.getElementById('postContent');
+    // Get references to the new HTML elements
+    const completion2sftContent = document.getElementById('completion_2sft_Content');
+    const completion1rlContent = document.getElementById('completion_1rl_Content');
+    const promptContent = document.getElementById('promptContent');
     const entryCounter = document.getElementById('entryCounter');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -21,8 +23,13 @@ function setupViewer(dataset) {
 
     function displayEntry(index) {
         const entry = dataset[index];
-        summaryContent.textContent = entry.completion;
-        postContent.textContent = entry.prompt;
+        
+        // Populate the elements with data from the new JSON structure
+        completion2sftContent.textContent = entry.completion_2sft;
+        completion1rlContent.textContent = entry.completion_1rl;
+        promptContent.textContent = entry.prompt;
+        
+        // Update counter and button states
         entryCounter.textContent = `Entry ${currentIndex + 1} of ${dataset.length}`;
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === dataset.length - 1;
