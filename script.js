@@ -29,24 +29,22 @@ function setupViewer(dataset) {
         completion1rlContent.textContent = entry.completion_1rl;
         promptContent.textContent = entry.prompt;
         
-        // Update counter and button states
+        // Update counter text
         entryCounter.textContent = `Entry ${currentIndex + 1} of ${dataset.length}`;
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === dataset.length - 1;
+
+        // Buttons are no longer disabled, so those lines are removed.
     }
 
     nextBtn.addEventListener('click', () => {
-        if (currentIndex < dataset.length - 1) {
-            currentIndex++;
-            displayEntry(currentIndex);
-        }
+        // Use the modulo operator to loop back to the start
+        currentIndex = (currentIndex + 1) % dataset.length;
+        displayEntry(currentIndex);
     });
 
     prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            displayEntry(currentIndex);
-        }
+        // Use a formula to loop back to the end
+        currentIndex = (currentIndex - 1 + dataset.length) % dataset.length;
+        displayEntry(currentIndex);
     });
 
     // Display the first entry initially
