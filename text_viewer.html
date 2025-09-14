@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Text Dataset Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Text Dataset Viewer</h1>
+    <a href="index.html">← Back to Home</a>
+    <h3 id="entryCounter">Loading...</h3>
+
+    <div>
+        <h2>Prompt</h2>
+        <p id="promptContent"></p>
+    </div>
+    
+    <div>
+        <h2>Completion (2sft)</h2>
+        <p id="completion_2sft_Content"></p>
+    </div>
+
+    <div>
+        <h2>Completion (1rl)</h2>
+        <p id="completion_1rl_Content"></p>
+    </div>
+
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+
+    <script src="text_viewer.js"></script>
+</body>
+</html>

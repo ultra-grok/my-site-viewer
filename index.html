@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dataset Viewer</title>
+    <title>My Dataset Viewers</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Dataset Viewer</h1>
-    <h3 id="entryCounter">Loading...</h3>
-
-    <div>
-        <h2>Prompt</h2>
-        <p id="promptContent"></p>
+    <h1>My Dataset Viewers</h1>
+    <p>Please choose a viewer to open:</p>
+    
+    <div class="viewer-choice">
+        <h2><a href="text_viewer.html">Text Viewer</a></h2>
+        <p>A simple viewer to cycle through prompts and completions as plain text.</p>
     </div>
     
-    <div>
-        <h2>Completion (2sft)</h2>
-        <p id="completion_2sft_Content"></p>
+    <div class="viewer-choice">
+        <h2><a href="plot_viewer.html">Interactive Plot Viewer</a></h2>
+        <p>An interactive viewer showing token probabilities. Hover over text to see its position on the plot.</p>
     </div>
-
-    <div>
-        <h2>Completion (1rl)</h2>
-        <p id="completion_1rl_Content"></p>
-    </div>
-
-    <button id="prevBtn">Previous</button>
-    <button id="nextBtn">Next</button>
-
-    <script src="script.js"></script>
 </body>
 </html>
