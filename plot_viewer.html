@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Plot Viewer</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
     <h1>Interactive Token Probability Plot</h1>
     <a href="index.html">← Back to Home</a>
     
     <h3 id="entryCounter">Loading...</h3>
     
-    <div id="plot"></div>
-    
-    <div id="text-container">Loading text...</div>
+    <div class="viewer-container">
+        
+        <div id="plot-wrapper">
+            <div id="plot"></div>
+        </div>
+
+        <div id="text-container">Loading text...</div>
+
+    </div>
 
     <div class="nav-buttons">
         <button id="prevBtn">← Previous</button>
@@ -24,4 +21,3 @@
 
     <script src="plot_viewer.js"></script>
 </body>
-</html>
