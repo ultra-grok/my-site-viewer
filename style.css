@@ -64,6 +64,68 @@ a:hover {
     cursor: pointer;
 }
 
+.search-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#searchInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+#searchStatus {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+}
+
+#searchResultsContainer {
+    margin-top: 10px;
+    max-height: 300px; /* Limit height and make it scrollable */
+    overflow-y: auto;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+}
+
+.search-result-item {
+    padding: 12px;
+    border-bottom: 1px solid #e1e1e1;
+    cursor: pointer;
+    background-color: #fff;
+}
+.search-result-item:last-child {
+    border-bottom: none;
+}
+.search-result-item:hover {
+    background-color: #f0f8ff; /* AliceBlue */
+}
+
+.result-index {
+    font-weight: bold;
+    color: #0366d6;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.result-snippet {
+    font-family: monospace;
+    font-size: 0.95em;
+    color: #333;
+}
+.result-snippet strong {
+    background-color: #fff3cd; /* A soft yellow highlight */
+    font-weight: bold;
+}
+
 .nav-buttons {
     margin-top: 20px;
 }
