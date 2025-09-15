@@ -6,8 +6,7 @@
     <title>Interactive Plot Viewer</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+</head><body>
     <h1>Interactive Token Probability Plot</h1>
     <a href="index.html">← Back to Home</a>
     
@@ -22,6 +21,14 @@
         <div id="text-container">Loading text...</div>
 
     </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search text in samples...">
+        <button id="searchBtn">Search</button>
+        <span id="searchStatus"></span>
+    </div>
+
+    <div id="searchResultsContainer"></div>
 
     <div class="nav-buttons">
         <button id="prevBtn">← Previous</button>
