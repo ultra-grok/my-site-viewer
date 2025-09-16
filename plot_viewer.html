@@ -6,7 +6,8 @@
     <title>Interactive Plot Viewer</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="style.css">
-</head><body>
+</head>
+<body>
     <h1>Interactive Token Probability Plot</h1>
     <a href="index.html">← Back to Home</a>
     
@@ -32,6 +33,12 @@
 
     <div class="nav-buttons">
         <button id="prevBtn">← Previous</button>
+        
+        <div class="goto-container">
+            <input type="number" id="goToInput" placeholder="Go to #..." min="1">
+            <button id="goToBtn">Go</button>
+        </div>
+        
         <button id="nextBtn">Next →</button>
     </div>
 
