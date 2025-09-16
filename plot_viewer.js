@@ -24,6 +24,10 @@ function setupViewer(dataset) {
     const searchStatus = document.getElementById('searchStatus');
     const searchResultsContainer = document.getElementById('searchResultsContainer');
 
+    // --- NEW: Get references to the go-to input and button ---
+    const goToInput = document.getElementById('goToInput');
+    const goToBtn = document.getElementById('goToBtn');
+
     let currentIndex = 0;
 
     if (!Array.isArray(dataset) || dataset.length === 0) {
@@ -31,6 +35,9 @@ function setupViewer(dataset) {
         textContainer.textContent = "";
         return;
     }
+    
+    // --- NEW: Set max value for the input field ---
+    goToInput.max = dataset.length;
 
     function displaySample(index) {
         const data = dataset[index];
@@ -88,7 +95,23 @@ function setupViewer(dataset) {
         displaySample(currentIndex);
     }
     
+    // --- NEW: Function to jump to a specific sample number ---
+    function goToSample() {
+        const sampleNumber = parseInt(goToInput.value);
+
+        // Validate the input
+        if (!isNaN(sampleNumber) && sampleNumber >= 1 && sampleNumber <= dataset.length) {
+            // Convert 1-based user input to 0-based array index
+            currentIndex = sampleNumber - 1;
+            displaySample(currentIndex);
+            goToInput.value = ''; // Clear input after successful jump
+        } else {
+            alert(`Please enter a number between 1 and ${dataset.length}.`);
+        }
+    }
+    
     function performSearch() {
+        // ... (rest of performSearch function is unchanged)
         const query = searchInput.value.trim();
         searchResultsContainer.innerHTML = '';
         searchStatus.textContent = '';
@@ -123,6 +146,7 @@ function setupViewer(dataset) {
     }
     
     function createSnippet(text, query) {
+        // ... (rest of createSnippet function is unchanged)
         const snippetLength = 120; // How many characters to show
         const queryLower = query.toLowerCase();
         const textLower = text.toLowerCase();
@@ -143,11 +167,21 @@ function setupViewer(dataset) {
         return snippet;
     }
 
+    // --- EVENT LISTENERS ---
+
     nextBtn.addEventListener('click', showNextSample);
     prevBtn.addEventListener('click', showPrevSample);
 
+    // --- NEW: Event listeners for the go-to functionality ---
+    goToBtn.addEventListener('click', goToSample);
+    goToInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            goToSample();
+        }
+    });
+
     document.addEventListener('keydown', (event) => {
-        if (event.target.tagName === 'INPUT') return; // Don't navigate while typing in search
+        if (event.target.tagName === 'INPUT') return; // Don't navigate while typing in any input
         if (event.key === 'ArrowRight') {
             showNextSample();
         } else if (event.key === 'ArrowLeft') {
